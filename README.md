@@ -535,6 +535,12 @@ A camada de build transforma o projeto em um pacote instalável e publicável.
 
 Usado principalmente para instalação e testes diretos em dispositivos Android.
 
+```bash
+flutter build apk --release
+```
+* 📂 **Local do arquivo:** `build/app/outputs/flutter-apk/app-release.apk`
+
+
 ### AAB
 
 O **Android App Bundle (`.aab`)** é o formato normalmente utilizado para envio à Google Play.
@@ -552,6 +558,11 @@ Assinatura
       ↓
 AAB
 ```
+```bash
+flutter build appbundle --release
+```
+* 📂 **Local do arquivo:** `build/app/outputs/bundle/release/app-release.aab`
+
 
 ### APK × AAB
 
