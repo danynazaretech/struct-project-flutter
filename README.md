@@ -416,8 +416,22 @@ android/app/src/main/AndroidManifest.xml
 Exemplo de permissão de acesso à Internet:
 
 ```xml
-<uses-permission
-    android:name="android.permission.INTERNET" />
+
+<manifest xmlns:android="http://android.com">
+
+    <!-- COLE A PERMISSÃO DE ACESSO A INTERNET AQUI -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:label="nome_do_seu_app"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+        
+        <!-- O restante do arquivo continua aqui embaixo... -->
+        
+    </application>
+</manifest>
+
 ```
 
 ### 7.2 Use apenas as permissões necessárias
