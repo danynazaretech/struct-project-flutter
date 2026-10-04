@@ -503,27 +503,51 @@ Em produção, a API deve estar disponível em um endereço acessível pelo disp
 https://api.exemplo.com
 ```
 
-### 7.5 Prefira HTTPS
+### 7.5 Prefira HTTPS 🔒
 
-Quando houver comunicação com servidores, utilize comunicação segura sempre que aplicável:
+Quando houver comunicação com servidores, utilize comunicação segura sempre que aplicável. O uso do protocolo seguro garante que os dados sejam criptografados durante o trânsito, impedindo a interceptação por terceiros.
 
-```text
-https://
+#### ❌ Exemplo Perigoso (HTTP)
+Se um invasor interceptar essa requisição, ele lerá a **senha** e o **token** como se estivessem escritos em um papel comum.
+```dart
+// Requisição insegura passando credenciais e recebendo um token exposto
+final response = await dio.post(
+  'http://meuservico.com', // ❌ HTTP expõe tudo na rede
+  data: {
+    'email': 'usuario@email.com',    // 👤 Dado pessoal
+    'password': 'SenhaSuperSecreta123' // 🔑 Credencial/Senha
+  },
+);
+
+// O Token recebido aqui também trafegou desprotegido de volta
+String token = response.data['token']; 
 ```
 
-em vez de:
+####  Exemplo Protegido (HTTPS)
+Com o HTTPS, o Flutter e o servidor criam um túnel blindado. Mesmo que alguém intercepte os dados no meio do caminho, verá apenas códigos embaralhados e ilegíveis.
+```dart
+// Requisição segura e criptografada de ponta a ponta
+final response = await dio.post(
+  'https://meuservico.com', //  HTTPS protege o canal
+  data: {
+    'email': 'usuario@email.com',
+    'password': 'SenhaSuperSecreta123'
+  },
+);
 
-```text
-http://
+String token = response.data['token']; //  Token recebido com segurança
 ```
 
-Isso é especialmente importante ao transmitir:
+---
 
-- dados pessoais;
-- credenciais;
-- senhas;
-- tokens;
-- dados de formulários.
+#### ⚠️ Cenários Críticos
+A adoção do **HTTPS** é obrigatória e especialmente importante ao transmitir:
+
+* **Dados pessoais:** Nome, CPF, e-mail, endereço ou qualquer informação que identifique o usuário.
+* **Credenciais e senhas:** Telas de login, alteração de senha e fluxos de autenticação.
+* **Tokens de acesso:** Bearer tokens, chaves de API (`API Keys`) e JWT utilizados para manter a sessão ativa.
+* **Dados de formulários:** Cadastros, informações de pagamento ou uploads de arquivos enviados pelo usuário.
+
 
 ---
 
