@@ -456,7 +456,7 @@ Necessita comunicação de rede
 Configuração/permissão correspondente
 ```
 
-> **Pergunta que o aluno deve saber responder:** “Por que meu aplicativo precisa dessa permissão?”
+>  “Por que meu aplicativo precisa dessa permissão?”
 
 Não adicione permissões sem necessidade.
 
