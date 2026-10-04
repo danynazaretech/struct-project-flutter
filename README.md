@@ -879,7 +879,7 @@ GOOGLE PLAY
 
 > **Nem tudo que pertence ao aplicativo fica no `pubspec.yaml`.**
 >
-> Sempre pergunte: **o que estou configurando e quem utiliza essa informação?**
+> Na hora de configurar os dados da sua aplicação sempre pergunte: **o que estou configurando e quem utiliza essa informação?**
 >
 > - Flutter?
 > - Android?
